@@ -1,0 +1,121 @@
+/* Reset và styles chung */
+* {
+    margin: 10;
+    padding: 10;
+    box-sizing: border-box;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #40E0D0;
+    margin-bottom: 1rem;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Navigation styles */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.9);
+    padding: 1.5rem 0;
+    text-align: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+nav a:hover,
+nav a.active {
+    color: #40E0D0;
+    background: rgba(64, 224, 208, 0.1);
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 2rem 40px;
+}
+
+/* Animation */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(64, 224, 208, 0.3);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(64, 224, 208, 0.6);
+    }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    nav a {
+        margin: 0 0.5rem;
+        font-size: 1rem;
+    }
+}
+.filter-btn {
+    background: transparent;
+    border: 2px solid #40E0D0;
+    color: #ffffff;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #40E0D0;
+    color: #0a0a0a;
+    transform: translateY(-2px);
+}
+.category-btn {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover, 
+.category-btn.active {
+    background: #40E0D0;
+    transform: scale(1.05);
+}
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}

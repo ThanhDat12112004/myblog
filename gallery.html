@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Dương Thành Đạt</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/gallery.css" rel="stylesheet">
+  
+</head>
+<body>
+    <nav>
+        <a href="trangchu.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="blog.html">BLOG</a>
+        <a href="#" class="active">GALLERY</a>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Bộ Sưu Tập Ảnh</h1>
+            <p>Khoảnh khắc đáng nhớ trong hành trình phát triển</p>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Tất cả</button>
+            <button class="filter-btn" data-filter="awards">Giải thưởng</button>
+            <button class="filter-btn" data-filter="events">Sự Kiện</button>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- Gallery items sẽ được thêm vào đây -->
+        </div>
+    </div>
+
+    <div class="modal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <img src="" alt="Preview">
+        </div>
+        <div class="modal-nav">
+            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <script>
+     
+
+        // Sample gallery items data
+        const galleryItems = [
+            {
+                category: 'events',
+                image: 'images/anh5.jpg',
+                title: 'Fujinet',
+                description: 'Tham quan công ty Fujinet'
+            },
+            {
+                category: 'awards',
+                image: 'images/anh9.jpg',
+                title: 'My Fisrt Website',
+                description: 'Đạt giải khuyến khích'
+            },
+            {
+                category: 'awards',
+                image: 'images/anh10.jpg',
+                title: 'Hutech CodeWar',
+                description: 'Đạt giải ba cuộc thi'
+            }, {
+                category: 'events',
+                image: 'images/anh7.jpg',
+                title: 'Ươm mầm tài năng 2024',
+                description: 'Tham gia cuộc thi'
+            },
+            {
+                category: 'events',
+                image: 'images/anh4.jpg',
+                title: 'Hội thap quy trình phát triển phần mềm',
+                description: 'Tham gia trả lời câu hỏi'
+            },
+            // Add more items as needed
+        ];
+
+        // Populate gallery
+        function populateGallery(items) {
+            const gallery = document.querySelector('.gallery-grid');
+            gallery.innerHTML = items.map((item, index) => `
+                <div class="gallery-item ${item.category}" data-category="${item.category}" ">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="gallery-item-info">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+                const items = document.querySelectorAll('.gallery-item');
+
+                items.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const modal = document.querySelector('.modal');
+        const modalImg = modal.querySelector('img');
+        const modalClose = modal.querySelector('.modal-close');
+        const prevBtn = modal.querySelector('.prev-btn');
+        const nextBtn = modal.querySelector('.next-btn');
+        let currentImageIndex = 0;
+
+        document.querySelectorAll('.gallery-item').forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateModalImage();
+                modal.classList.add('active');
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        function updateModalImage() {
+            const items = document.querySelectorAll('.gallery-item');
+            const currentItem = items[currentImageIndex];
+            modalImg.src = currentItem.querySelector('img').src;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            const items = document.querySelectorAll('.gallery-item');
+            currentImageIndex = (currentImageIndex - 1 + items.length) % items.length;
+            updateModalImage();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const items = document.querySelectorAll('.gallery-item');
+            currentImageIndex = (currentImageIndex + 1) % items.length;
+            updateModalImage();
+        });
+
+        // Initialize gallery
+        populateGallery(galleryItems);
+    </script>
+</body>
+</html>
