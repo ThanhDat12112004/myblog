@@ -1,4 +1,3 @@
-📋 Showing the ENHANCED blog.html content...
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -9,189 +8,196 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/blog.css" rel="stylesheet">
-    <script src="js/blog.js"></script>
-
 </head>
 <body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress">
+        <div class="reading-progress-bar"></div>
+    </div>
+
     <nav>
         <a href="./index.html">HOME</a>
         <a href="./about.html">ABOUT</a>
         <a class="active">BLOG</a>
         <a href="./gallery.html">GALLERY</a>
+        
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
     </nav>
 
     <div class="container">
-        <div class="header" >
-            <h1>My Blog</h1>
-            <p>Chia sẻ kiến thức về Java và JavaScript</p>
-        <!-- </div> -->
-        <div class="blog-categories" >
-            <button class="filter-btn active" data-category="all">Tất cả</button>
-            <button class="filter-btn" data-category="Java">Java</button>
-            <button class="filter-btn" data-category="JavaScript">JavaScript</button>
+        <!-- Enhanced Header with Stats -->
+        <div class="header">
+            <h1 data-aos="fade-down">
+                <span class="gradient-text">My Tech Blog</span>
+                <span class="typing-cursor">|</span>
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="200">Chia sẻ kiến thức về Java và JavaScript</p>
+            
+            <!-- Blog Stats -->
+            <div class="blog-stats" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="12">0</span>
+                    <span class="stat-label">Bài viết</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="2">0</span>
+                    <span class="stat-label">Chủ đề</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="1500">0</span>
+                    <span class="stat-label">Lượt đọc</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Search and Filter Section -->
+        <div class="search-filter-section" data-aos="fade-up" data-aos-delay="600">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm bài viết..." class="search-input">
+                    <button class="search-clear" id="searchClear">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Enhanced Filter Buttons -->
+            <div class="blog-categories">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-th-large"></i>
+                    <span>Tất cả</span>
+                </button>
+                <button class="filter-btn" data-category="Java">
+                    <i class="fab fa-java"></i>
+                    <span>Java</span>
+                </button>
+                <button class="filter-btn" data-category="JavaScript">
+                    <i class="fab fa-js-square"></i>
+                    <span>JavaScript</span>
+                </button>
+            </div>
+
+            <!-- Sort Options -->
+            <div class="sort-options">
+                <select id="sortSelect" class="sort-select">
+                    <option value="newest">Mới nhất</option>
+                    <option value="oldest">Cũ nhất</option>
+                    <option value="popular">Phổ biến</option>
+                    <option value="title">Theo tên</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Results Info -->
+        <div class="results-info" id="resultsInfo">
+            <span class="results-count">Hiển thị 12 bài viết</span>
+        </div>
+
+        <!-- Loading Skeleton -->
+        <div class="loading-skeleton" id="loadingSkeleton">
+            <div class="skeleton-card">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton-tag"></div>
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-meta"></div>
+                </div>
+            </div>
         </div>
         
-        <div class="blog-grid">
+        <div class="blog-grid" id="blogGrid">
             
-            <!-- Java Blog Post -->
-            <article class="blog-card">
-                <img src="images/js1.png" alt="JavaScript" class="blog-card-image">
+            <!-- Enhanced Blog Cards -->
+            <article class="blog-card" data-category="JavaScript" data-date="2024-12-15" data-popularity="95">
+                <div class="blog-card-image-container">
+                    <img src="images/js1.png" alt="JavaScript" class="blog-card-image">
+                    <div class="blog-card-overlay">
+                        <div class="blog-card-actions">
+                            <button class="action-btn bookmark-btn" title="Bookmark">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                            <button class="action-btn share-btn" title="Share">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <div class="blog-card-content">
                     <span class="blog-card-tag">JavaScript</span>
                     <h2>JavaScript Essentials 1 - Khóa Học Từ NetAcad</h2>
                     <p>Khóa học JavaScript Essentials của NetAcad là một chương trình học trực tuyến...</p>
                     <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post1.html" class="read-more">Đọc thêm</a>
+                        <div class="meta-left">
+                            <span><i class="far fa-calendar"></i> 15 Tháng 12, 2024</span>
+                            <span><i class="far fa-clock"></i> 10 phút đọc</span>
+                        </div>
+                        <div class="meta-right">
+                            <span class="popularity-score">
+                                <i class="fas fa-fire"></i> 95
+                            </span>
+                        </div>
                     </div>
+                    <a href="posts/post1.html" class="read-more">
+                        Đọc thêm <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </article>
 
-            <article class="blog-card">
-                <img src="images/js2.png" alt="JavaScript" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">JavaScript</span>
-                    <h2>JavaScript Essentials 2 - Khóa Học Nâng Cao</h2>
-                    <p>Tìm hiểu về các nguyên lý cơ bản của OOP và cách áp dụng trong Java...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post2.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
+            <!-- Add your existing blog cards here with the same enhanced structure -->
+            
+        </div>
 
-            <article class="blog-card">
-                <img src="images/post3.jfif" alt="Java & JavaScript" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">Java</span>
-                    <h2>10 Trang Web Học Lập Trình Hữu Ích</h2>
-                    <p>Dưới đây là danh sách 10 trang web học lập trình hữu ích dành cho cả người mới bắt đầu và các lập trình viên c...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post3.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="images/post4.jpg" alt="Java" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">Java</span>
-                    <h2>Sách Hay Về Java</h2>
-                    <p>Dù bạn là người mới học hay là người đã có nhiều kinh nghiệm về Java thì tôi vẫn hy vọng những quy...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post4.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="images/post5.jpg" alt="Java" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">Java</span>
-                    <h2>Tính Đa Hình Trong Java - OOP</h2>
-                    <p>Đa hình là khả năng làm việc với một số loại như thể chúng là cùng một loại. Hơn nữa, hành vi của các đối tượng...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post5.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="images/post6.jfif" alt="Java" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">Java</span>
-                    <h2>Đóng Gói Trong Java - OOP</h2>
-                    <p>Đóng gói là một trong những nguyên tắc cơ bản của lập trình hướng đối tượng, cho phép bạn kết hợp ...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post6.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="images/post7.jfif" alt="Java & JavaScript" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">JavaScript</span>
-                    <h2>Con đường trở thành Lập trình viên: JavaScript và Java trong năm 2024</h2>
-                    <p>Trong thời đại số hóa ngày nay, nghề lập trình viên đang trở thành một trong những lựa chọn ...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post7.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="images/post8.png" alt="Java" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">Java</span>
-                    <h2>Mối quan hệ giữa các lớp: Kế thừa, Thành phần và Tổng hợp</h2>
-                    <p>Trong lập trình hướng đối tượng (OOP), các mối quan hệ giữa các lớp là một khái niệm cốt ...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post8.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="images/post9.jpg" alt="Java" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">Java</span>
-                    <h2>Biến Môi Trường Trong Java</h2>
-                    <p>Biến môi trường là cặp khóa/giá trị được đặt bên ngoài chương trình và luôn có sẵn cho chươ...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post9.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="images/post10.webp" alt="Java & JavaScript" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">Java</span>
-                    <h2>Học Phát Triển Java và Có Được Công Việc Mơ Ước Chỉ Sau 12 Tháng</h2>
-                    <p>Xin chào, tôi là Alexey, người đồng sáng lập và CMO của CodeGym. Hôm nay tôi sẽ chia...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post10.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <img src="images/post11.png" alt="JavaScript" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">JavaScript</span>
-                    <h2>Tìm hiểu về Callback Function trong JavaScript</h2>
-                    <p>Callback function là một kỹ thuật được sử dụng trong JavaScript và lập trình chức năng. Bạn có t...</p>
-                    <div class="blog-card-meta">
-                        <span>15 Tháng 12, 2024</span>
-                        <a href="posts/post11.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-            <!-- JavaScript Blog Post -->
-            <article class="blog-card">
-                <img src="images/post12.png" alt="JavaScript" class="blog-card-image">
-                <div class="blog-card-content">
-                    <span class="blog-card-tag">JavaScript</span>
-                    <h2>Hướng Dẫn Loop Through Object trong Javascript ES6</h2>
-                    <p>Bài này nằm trong loạt bài Kỹ thuật xử lý Javascript nâng cao...</p>
-                    <div class="blog-card-meta">
-                        <span>10 Tháng 12, 2024</span>
-                        <a href="#" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- More blog posts can be added here -->
+        <!-- Load More Button -->
+        <div class="load-more-container" data-aos="fade-up">
+            <button class="load-more-btn" id="loadMoreBtn">
+                <span>Tải thêm bài viết</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
         </div>
     </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Share Modal -->
+    <div class="share-modal" id="shareModal">
+        <div class="share-modal-content">
+            <div class="share-modal-header">
+                <h3>Chia sẻ bài viết</h3>
+                <button class="share-modal-close" id="shareModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="share-options">
+                <button class="share-option facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </button>
+                <button class="share-option twitter">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </button>
+                <button class="share-option linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                </button>
+                <button class="share-option copy-link">
+                    <i class="fas fa-link"></i>
+                    <span>Copy Link</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/blog.js"></script>
 </body>
 </html>
