@@ -1,7 +1,7 @@
 /* Reset và styles chung */
 * {
-    margin: 10;
-    padding: 10;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
